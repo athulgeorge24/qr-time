@@ -1,15 +1,24 @@
-const now = new Date();
+function updateTime() {
+    const now = new Date();
 
-const date = now.toLocaleDateString("en-IN", {
-    day: "numeric",
-    month: "long",
-    year: "numeric"
-});
+    const date = now.toLocaleDateString("en-IN", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    });
 
-const time = now.toLocaleTimeString("en-IN");
+    const time = now.toLocaleTimeString("en-IN");
 
-const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const timezone = Intl.DateTimeFormat()
+        .resolvedOptions()
+        .timeZone;
 
-document.getElementById("date").textContent = date;
-document.getElementById("time").textContent = time;
-document.getElementById("timezone").textContent = timezone;
+    document.getElementById("date").textContent = date;
+    document.getElementById("time").textContent = time;
+    document.getElementById("timezone").textContent = timezone;
+}
+
+updateTime();
+
+// Update every second
+setInterval(updateTime, 1000);
